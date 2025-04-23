@@ -58,7 +58,7 @@ public class PostagemController {
 		if (temaRepository.existsById(postagem.getTema().getId()))
 			return ResponseEntity.status(HttpStatus.CREATED).body(postagemRepository.save(postagem));
 
-		throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "tEMA NÃO EXISTE!", null);
+		throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "TEMA NÃO EXISTE!", null);
 	}
 
 	@PutMapping // o @RequestBody, serve para na hora da requisição lá no insomnia, serem
