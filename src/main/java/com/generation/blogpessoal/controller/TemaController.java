@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
 import com.generation.blogpessoal.model.Tema;
-import com.generation.blogpessoal.repository.PostagemRepository;
 import com.generation.blogpessoal.repository.TemaRepository;
 
 import jakarta.validation.Valid;
@@ -29,14 +28,10 @@ import jakarta.validation.Valid;
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 public class TemaController {
 
-	private final PostagemRepository postagemRepository;
-
+	
 	@Autowired
 	private TemaRepository temaRepository;
 
-	TemaController(PostagemRepository postagemRepository) {
-		this.postagemRepository = postagemRepository;
-	}
 
 	@GetMapping
 	public ResponseEntity<List<Tema>> getAll() {
@@ -74,7 +69,7 @@ public class TemaController {
 
 		if (tema.isEmpty())
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND);
-		postagemRepository.deleteById(id);
+			temaRepository.deleteById(id);
 	}
 
 }
